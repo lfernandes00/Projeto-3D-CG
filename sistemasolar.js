@@ -106,11 +106,11 @@ function animate() {
     triton.position.y = Math.sin(t*0.5)*7;
     triton.position.z = Math.cos(t*0.5)*7;
     
-    t += Math.PI/180*2;
+    t += Math.PI/180*0.5;
     
     if(rotarLuna)
     {
-        l += Math.PI/180*2;
+        l += Math.PI/180*0.5;
     }
     requestAnimationFrame(animate);
     renderer.render( scene, camera );
@@ -181,8 +181,8 @@ function main() {
     // AÃ±adir Sol
     var solGeometry	= new THREE.SphereGeometry(50, 64, 64); 
 	var solMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('sol.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('solBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/sol.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/solBump.jpg'),
 		bumpScale : 8,
         emissive  : 0x333333,
 	});
@@ -233,9 +233,9 @@ function main() {
 			contextResultSol.putImageData(dataResult,0,0)	
 			capaSolarMaterial.map.needsUpdate = true;
 		})
-		imageTrans.src = 'solMapTrans.jpg';
+		imageTrans.src = 'images/solMapTrans.jpg';
 	}, false);
-	imageMapSol.src	= 'solMap.jpg';
+	imageMapSol.src	= 'images/solMap.jpg';
 	
 	var capaSolarGeometry = new THREE.SphereGeometry(50.5, 64, 64)
 	var capaSolarMaterial = new THREE.MeshPhongMaterial({
@@ -253,8 +253,8 @@ function main() {
     // AÃ±adir Mercurio
     var mercurioGeometry	= new THREE.SphereGeometry(4, 64, 64); 
 	var mercurioMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('mercurio.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('mercurioBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/mercurio.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/mercurioBump.jpg'),
 		bumpScale : 8,
 	});
     mercurio = new THREE.Mesh(mercurioGeometry,mercurioMaterial);
@@ -265,8 +265,8 @@ function main() {
     // AÃ±adir Venus
     var venusGeometry	= new THREE.SphereGeometry(5, 64, 64); 
 	var venusMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('venus.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('venusBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/venus.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/venusBump.jpg'),
 		bumpScale : 8,
 	});
     venus = new THREE.Mesh(venusGeometry,venusMaterial);
@@ -278,10 +278,10 @@ function main() {
     // AÃ±adir Tierra
     var tierraGeometry = new THREE.SphereGeometry(15, 64, 64)
 	var tierraMaterial = new THREE.MeshPhongMaterial({
-		map		    : THREE.ImageUtils.loadTexture('tierra.jpg'),
-		bumpMap		: THREE.ImageUtils.loadTexture('tierraBump.jpg'),
+		map		    : THREE.ImageUtils.loadTexture('images/tierra.jpg'),
+		bumpMap		: THREE.ImageUtils.loadTexture('images/tierraBump.jpg'),
 		bumpScale	: 0.8,
-		specularMap	: THREE.ImageUtils.loadTexture('tierraSpecular.jpg'),
+		specularMap	: THREE.ImageUtils.loadTexture('images/tierraSpecular.jpg'),
 		specular	: new THREE.Color('grey'),
 	});
 	tierra = new THREE.Mesh(tierraGeometry, tierraMaterial);
@@ -332,9 +332,9 @@ function main() {
 			contextResult.putImageData(dataResult,0,0)	
 			tierraNubesMaterial.map.needsUpdate = true;
 		})
-		imageTrans.src = 'tierraCloudMapTrans.jpg';
+		imageTrans.src = 'images/tierraCloudMapTrans.jpg';
 	}, false);
-	imageMap.src = 'tierraCloudMap.jpg';
+	imageMap.src = 'images/tierraCloudMap.jpg';
 	
 	var tierraNubesGeometry	= new THREE.SphereGeometry(15.5, 64, 64)
 	var tierraNubesMaterial	= new THREE.MeshPhongMaterial({
@@ -353,8 +353,8 @@ function main() {
     var lunaGeometry = new THREE.SphereGeometry(3,64,64);
     var lunaTextura = THREE
     var lunaMaterial = new THREE.MeshPhongMaterial({
-		map		    : THREE.ImageUtils.loadTexture('luna.jpg'),
-		bumpMap		: THREE.ImageUtils.loadTexture('lunaBump.jpg'),
+		map		    : THREE.ImageUtils.loadTexture('images/luna.jpg'),
+		bumpMap		: THREE.ImageUtils.loadTexture('images/lunaBump.jpg'),
 		bumpScale	: 0.8,
 	});
     luna = new THREE.Mesh(lunaGeometry,lunaMaterial);
@@ -369,8 +369,8 @@ function main() {
     marteNodo = new THREE.Group();
     var marteGeometry	= new THREE.SphereGeometry(11, 64, 64); 
 	var marteMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('marte.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('marteBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/marte.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/marteBump.jpg'),
 		bumpScale : 5,
 	});
     marte = new THREE.Mesh(marteGeometry,marteMaterial);
@@ -382,8 +382,8 @@ function main() {
     // AÃ±adir Phobos
     var phobosGeometry	= new THREE.SphereGeometry(2, 64, 64); 
 	var phobosMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('phobos.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('phobosBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/phobos.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/phobosBump.jpg'),
 		bumpScale : 8,
 	});
     phobos = new THREE.Mesh(phobosGeometry,phobosMaterial);
@@ -394,8 +394,8 @@ function main() {
     // AÃ±adir Deimos
     var deimosGeometry	= new THREE.SphereGeometry(2, 64, 64); 
 	var deimosMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('deimos.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('deimosBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/deimos.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/deimosBump.jpg'),
 		bumpScale : 8,
 	});
     deimos = new THREE.Mesh(deimosGeometry,deimosMaterial);
@@ -407,8 +407,8 @@ function main() {
     jupiterNodo = new THREE.Group();
     var jupiterGeometry	= new THREE.SphereGeometry(20, 64, 64); 
 	var jupiterMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('jupiter.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('jupiterBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/jupiter.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/jupiterBump.jpg'),
 		bumpScale : 2,
 	});
     jupiter = new THREE.Mesh(jupiterGeometry,jupiterMaterial);
@@ -459,9 +459,9 @@ function main() {
 			contextResultSaturno.putImageData(dataResult,0,0)	
 			jupiterGasMaterial.map.needsUpdate = true;
 		})
-		imageTrans.src = 'jupiterMapTrans.jpg';
+		imageTrans.src = 'images/jupiterMapTrans.jpg';
 	}, false);
-	imageMapJupiter.src	= 'jupiterMap.jpg';
+	imageMapJupiter.src	= 'images/jupiterMap.jpg';
 	
 	var jupiterGasGeometry = new THREE.SphereGeometry(20.1, 64, 64)
 	var jupiterGasMaterial = new THREE.MeshPhongMaterial({
@@ -479,8 +479,8 @@ function main() {
     // AÃ±adir Io
     var ioGeometry	= new THREE.SphereGeometry(4, 64, 64); 
 	var ioMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('io.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('ioBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/io.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/ioBump.jpg'),
 		bumpScale : 3,
 	});
     io = new THREE.Mesh(ioGeometry,ioMaterial);
@@ -491,8 +491,8 @@ function main() {
     // AÃ±adir Europa
     var europaGeometry	= new THREE.SphereGeometry(4.1, 64, 64); 
 	var europaMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('europa.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('europaBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/europa.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/europaBump.jpg'),
 		bumpScale : 3,
 	});
     europa = new THREE.Mesh(europaGeometry,europaMaterial);
@@ -503,8 +503,8 @@ function main() {
     // AÃ±adir Ganimedes
     var ganimedesGeometry	= new THREE.SphereGeometry(3.7, 64, 64); 
 	var ganimedesMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('ganimedes.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('ganimedesBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/ganimedes.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/ganimedesBump.jpg'),
 		bumpScale : 3,
 	});
     ganimedes = new THREE.Mesh(ganimedesGeometry,ganimedesMaterial);
@@ -515,8 +515,8 @@ function main() {
     // AÃ±adir Calisto
     var calistoGeometry	= new THREE.SphereGeometry(3.2, 64, 64); 
 	var calistoMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('calisto.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('calistoBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/calisto.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/calistoBump.jpg'),
 		bumpScale : 3,
 	});
     calisto = new THREE.Mesh(calistoGeometry,calistoMaterial);
@@ -529,8 +529,8 @@ function main() {
     saturnoNodo2 = new THREE.Group();
     var saturnoGeometry	= new THREE.SphereGeometry(30, 64, 64); 
 	var saturnoMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('saturno.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('saturnoBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/saturno.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/saturnoBump.jpg'),
 		bumpScale : 3,
 	});
     saturno = new THREE.Mesh(saturnoGeometry,saturnoMaterial);
@@ -543,7 +543,7 @@ function main() {
     //AÃ±adir Anillo 1
     var anillo1Geometry = new THREE.TorusGeometry(36, 4, 2, 64, Math.PI*2);
     var anillo1Material = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('anillo1.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/anillo1.jpg'),
 	});
     anillo1 = new THREE.Mesh(anillo1Geometry, anillo1Material);
     saturnoNodo1.add(anillo1);
@@ -551,7 +551,7 @@ function main() {
     //AÃ±adir Anillo 2
     var anillo2Geometry = new THREE.TorusGeometry(46, 5, 2, 64, Math.PI*2);
     var anillo2Material = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('anillo2.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/anillo2.jpg'),
 	});
     anillo2 = new THREE.Mesh(anillo2Geometry, anillo2Material);
     saturnoNodo1.add(anillo2);
@@ -559,7 +559,7 @@ function main() {
     //AÃ±adir Anillo 3
     var anillo3Geometry = new THREE.TorusGeometry(58, 6, 2, 64, Math.PI*2);
     var anillo3Material = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('anillo3.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/anillo3.jpg'),
 	});
     anillo3 = new THREE.Mesh(anillo3Geometry, anillo3Material);
     saturnoNodo1.add(anillo3);
@@ -568,8 +568,8 @@ function main() {
     uranoNodo = new THREE.Group();
     var uranoGeometry	= new THREE.SphereGeometry(4.3, 64, 64); 
 	var uranoMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('urano.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('uranoBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/urano.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/uranoBump.jpg'),
 		bumpScale : 3,
 	});
     urano = new THREE.Mesh(uranoGeometry,uranoMaterial);
@@ -581,8 +581,8 @@ function main() {
     // AÃ±adir Miranda
     var mirandaGeometry	= new THREE.SphereGeometry(1.4, 64, 64); 
 	var mirandaMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('miranda.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('mirandaBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/miranda.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/mirandaBump.jpg'),
 		bumpScale : 3,
 	});
     miranda = new THREE.Mesh(mirandaGeometry,mirandaMaterial);
@@ -593,8 +593,8 @@ function main() {
     // AÃ±adir Ariel
     var arielGeometry	= new THREE.SphereGeometry(1, 64, 64); 
 	var arielMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('ariel.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('arielBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/ariel.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/arielBump.jpg'),
 		bumpScale : 3,
 	});
     ariel = new THREE.Mesh(arielGeometry,arielMaterial);
@@ -605,8 +605,8 @@ function main() {
     // AÃ±adir Umbriel
     var umbrielGeometry	= new THREE.SphereGeometry(0.8, 64, 64); 
 	var umbrielMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('umbriel.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('umbrielumbrielBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/umbriel.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/umbrielumbrielBump.jpg'),
 		bumpScale : 3,
 	});
     umbriel = new THREE.Mesh(umbrielGeometry,umbrielMaterial);
@@ -617,8 +617,8 @@ function main() {
     // AÃ±adir Titania
     var titaniaGeometry	= new THREE.SphereGeometry(0.5, 64, 64); 
 	var titaniaMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('titania.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('titaniaBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/titania.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/titaniaBump.jpg'),
 		bumpScale : 3,
 	});
     titania = new THREE.Mesh(titaniaGeometry,titaniaMaterial);
@@ -629,8 +629,8 @@ function main() {
     // AÃ±adir Oberon
     var oberonGeometry	= new THREE.SphereGeometry(0.3, 64, 64); 
 	var oberonMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('oberon.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('oberonBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/oberon.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/oberonBump.jpg'),
 		bumpScale : 3,
 	});
     oberon = new THREE.Mesh(oberonGeometry,oberonMaterial);
@@ -642,8 +642,8 @@ function main() {
     neptunoNodo = new THREE.Group();
     var neptunoGeometry	= new THREE.SphereGeometry(4.3, 64, 64); 
 	var neptunoMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('neptuno.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('neptunoBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/neptuno.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/neptunoBump.jpg'),
 		bumpScale : 3,
 	});
     neptuno = new THREE.Mesh(neptunoGeometry,neptunoMaterial);
@@ -655,8 +655,8 @@ function main() {
     // AÃ±adir Triton
     var tritonGeometry	= new THREE.SphereGeometry(1.2, 64, 64); 
 	var tritonMaterial = new THREE.MeshPhongMaterial({
-		map       : THREE.ImageUtils.loadTexture('triton.jpg'),
-		bumpMap   : THREE.ImageUtils.loadTexture('tritonBump.jpg'),
+		map       : THREE.ImageUtils.loadTexture('images/triton.jpg'),
+		bumpMap   : THREE.ImageUtils.loadTexture('images/tritonBump.jpg'),
 		bumpScale : 3,
 	});
     triton = new THREE.Mesh(tritonGeometry,tritonMaterial);
