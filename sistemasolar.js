@@ -6,8 +6,142 @@ var step=0;
 var t = 0;
 var l = 0;
 var rotarLuna = true;
-
+let mousePos = { x: 0, y: 0 };
+let plane;
 main();
+
+function createPlane() {
+    plane = new THREE.Object3D();
+
+    
+    const materialWhite = new THREE.MeshPhongMaterial({ color: 0xffffff });
+    const materialRed = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+    
+
+    //cubo
+    const geometry = new THREE.BoxGeometry(30, 23, 23);
+    const cubo = new THREE.Mesh(geometry, materialWhite);
+    cubo.position.x = -40;
+    scene.add(cubo);
+    plane.add(cubo);
+
+    //cubo pequeno1
+    const small = new THREE.BoxGeometry(15, 8, 8);
+    const smallCube = new THREE.Mesh(small, materialRed);
+    smallCube.position.x = -40;
+    smallCube.position.z = 13;
+    scene.add(smallCube);
+    plane.add(smallCube);
+
+    //cubo pequeno1
+    const small2 = new THREE.BoxGeometry(15, 8, 8);
+    const smallCube2 = new THREE.Mesh(small2, materialRed);
+    smallCube2.position.x = -40;
+    smallCube2.position.z = -13;
+    scene.add(smallCube2);
+    plane.add(smallCube2);
+
+   
+
+    //Fim do foguetao 
+    let fim = new THREE.CylinderGeometry(10, 6, 13, 28);
+    let fim2 = new THREE.Mesh(fim, materialRed);
+    fim2.rotateZ(Math.PI / 2);
+    fim2.position.x = -62;
+    plane.add(fim2);
+
+
+    //Meio do foguetao
+    let geomCockpit = new THREE.CylinderGeometry(9, 9, 53, 28);
+    let cockpit = new THREE.Mesh(geomCockpit, materialWhite);
+    cockpit.rotateZ(Math.PI / 2);
+    plane.add(cockpit);
+
+
+
+    // Frente do foguetao
+    let geomEngine = new THREE.ConeGeometry(9, 25, 60);
+    let engine = new THREE.Mesh(geomEngine, materialWhite);
+    engine.position.x = 39;
+    engine.rotateZ(3 * Math.PI / 2);
+    plane.add(engine);
+
+    console.log("Plane created")
+    scene.add(plane);
+
+    // Create the wing
+    // let geomSideWing = new THREE.BoxGeometry(40, 8, 150);
+    // let sideWing = new THREE.Mesh(geomSideWing, materialRed);
+    // plane.add(sideWing);
+
+    // propeller
+    // let geomPropeller = new THREE.BoxGeometry(20, 10, 10);
+    // // access a specific vertex of a shape through the vertices array, and then move its x, y and z property
+    // geomPropeller.vertices[4].y -= 5;
+    // geomPropeller.vertices[4].z += 5;
+    // geomPropeller.vertices[5].y -= 5;
+    // geomPropeller.vertices[5].z -= 5;
+    // geomPropeller.vertices[6].y += 5;
+    // geomPropeller.vertices[6].z += 5;
+    // geomPropeller.vertices[7].y += 5;
+    // geomPropeller.vertices[7].z -= 5;
+    // propeller = new THREE.Mesh(geomPropeller, materialBrown);
+
+    // blades
+    // let geomBlade = new THREE.BoxGeometry(1, 100, 20);
+    // let blade = new THREE.Mesh(geomBlade, materialDarkBrown);
+    // blade.position.set(8, 0, 0);
+
+    // SECOND propeller
+    // let blade2 = blade.clone();
+    // blade2.rotation.x = Math.PI / 2;
+
+    // propeller.add(blade);
+    // propeller.add(blade2);
+
+    // propeller.position.set(50, 0, 0);
+    // plane.add(propeller);
+
+    // plane.scale.set(0.25, 0.25, 0.25);
+    // plane.position.y = 100;
+
+    plane.position.x=100;
+    plane.position.y=100;
+
+    /*****************************
+    * SHADOWS 
+    ****************************/
+    // Plane meshes must cast and receive shadows
+    plane.traverse(function (child) {
+        if (child instanceof THREE.Mesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+        }
+    });
+
+
+}
+
+function handleMouseMove(event) {
+    let tx = -1 + (event.clientX / window.innerWidth) * 2;
+    let ty = 1 - (event.clientY / window.innerHeight) * 2;
+    mousePos = { x: tx, y: ty };
+}
+
+function updatePlane() {
+    //let targetX = mousePos.x * 100;
+    let targetY = mousePos.y * 100;
+
+    // // update the airplane's position
+    // plane.position.x = targetX;
+    // plane.position.y = targetY + 100;
+
+    // update the airplane's position SMOOTHLY
+    plane.position.y += (targetY - plane.position.y + 100) * 0.1;
+    plane.rotation.z = (targetY - plane.position.y + 100) * 0.013;
+
+}
+
 
 function animate() {
     step+=0.1;
@@ -117,11 +251,12 @@ function animate() {
     controls.update();
 }
 
+
 function degToRad (degrees) {
         return degrees * Math.PI / 180;
 };
 
-//FunciÃ³n para cuando se hace click con el raton
+// FunciÃ³n para cuando se hace click con el raton
 function mouseDown(e) {
     if(rotarLuna)
         rotarLuna = false;
@@ -675,6 +810,12 @@ function main() {
 
     $("#canvas").append(renderer.domElement);
     document.addEventListener("dblclick", mouseDown, false);
+
+    createPlane();
+
+    document.addEventListener('mousemove', handleMouseMove, false);
+
+    updatePlane();
 
     animate();
 }
